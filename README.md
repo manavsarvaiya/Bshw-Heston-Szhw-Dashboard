@@ -87,14 +87,58 @@ Uses Newton–Raphson with robust fallback to bisection search and bounded volat
 
 --------------------------------------------------------------
 
-## Model Specifications
+## BSHW Model Dynamics
 
-### BaseModel Utilities
+### Effective stock dynamics under stochastic short rate:
+```
+dS(t) = r(t) S(t) dt + σ S(t) dW₁(t)
+```
+### Hull–White short-rate process:
+```
+dr(t) = λ (θ(t) - r(t)) dt + η dW₂(t)
+⟨dW₁, dW₂⟩ = ρ dt
+```
+### The implementation:
+- Computes an effective BSHW volatility via time integration of a forward volatility term.
+- Prices options using Black–Scholes on the forward S0/P0T with this composite volatility.
 
+### Key methods:
+- `BSHWVolatility(T, eta, sigma, rho, lambd)`
+- `BSHWOptionPrice(CP, S0, K, P0T, T, eta, sigma, rho, lambd)`
+- `run_analysis(S0, T, lambd, eta, sigma, rho)`
+  
+--------------------------------------------------------------
 
+## Heston–HW Framework
 
+### Heston stochastic volatility with Hull–White rates:
 
+```
+dS(t) = r(t) S(t) dt + √v(t) S(t) dW₁(t)
+dv(t) = κ (v̄ - v(t)) dt + γ √v(t) dW₂(t)
+dr(t) = λ (θ(t) - r(t)) dt + η dW₃(t)
+```
+### Correlations:
 
+```
+⟨dW₁, dW₂⟩ = ρₓᵥ dt   (stock–vol correlation)
+⟨dW₁, dW₃⟩ = ρₓʳ dt   (stock–rate correlation)
+```
+## Implementation highlights:
+
+- CIR_Sample: Exact (noncentral chi-square) sampling for CIR variance, with Euler fallback.
+- GeneratePathsHestonHW_AES: “Almost exact” path simulation for (S, v, r) and money-market account \[ M_t = e^{\int_0^t r(s)\,ds} \]
+
+EUOptionPriceFromMCPathsGeneralizedStochIR: Monte Carlo pricing using path-dependent discounting via 
+𝑀
+𝑇
+M
+T
+	​
+
+.
+
+run_analysis: Orchestrates path generation, pricing across strikes, and martingale checks.
 
 
 
