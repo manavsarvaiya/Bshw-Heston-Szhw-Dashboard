@@ -131,6 +131,29 @@ dr(t) = λ (θ(t) - r(t)) dt + η dW₃(t)
 - EUOptionPriceFromMCPathsGeneralizedStochIR: Monte Carlo pricing using path-dependent discounting via $M_T$
 - run_analysis: Orchestrates path generation, pricing across strikes, and martingale checks.
 
+--------------------------------------------------------------
+
+## SZHW Model (Schöbel–Zhu with HW Rates)
+
+### Schöbel–Zhu volatility plus Hull–White rates (conceptual form):
+
+```
+dS(t)   = r(t) S(t) dt + σ(t) S(t) dW₁(t)
+dσ(t)   = κ (σ̄ - σ(t)) dt + γ dW₂(t)
+dr(t)   = λ (θ(t) - r(t)) dt + η dW₃(t)
+```
+### The current implementation focuses on parameter sensitivity of implied volatility curves, using stylized (closed-form-like) IV patterns to highlight qualitative effects:
+
+- `run_sensitivity_analysis(...)` returns IV curves across strikes for:
+  - γ (vol-of-vol)
+  - κ (volatility mean reversion)
+  - Rxsigma (stock–volatility correlation)
+  - sigmabar (long-run volatility level)
+
+The Streamlit page plots these curves for visual comparison.
+
+--------------------------------------------------------------
+
 
 
 
