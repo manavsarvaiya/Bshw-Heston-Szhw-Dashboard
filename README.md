@@ -295,7 +295,7 @@ run_analysis()
 ### Model Validation
 
 #### - Martingale Check (Heston–HW):
-$\mathbb{E}\!\left[\frac{S_T}{M_T}\right] \approx S_0$ for risk-neutral correctness.
+  $\mathbb{E}\\left[\frac{S_T}{M_T}\right] \approx S_0$  for risk-neutral correctness.
 
 #### - Basic error handling with fallbacks:
   - CIR sampling fallback to Euler
@@ -309,12 +309,87 @@ $\mathbb{E}\!\left[\frac{S_T}{M_T}\right] \approx S_0$ for risk-neutral correctn
 
 --------------------------------------------------------------
 
+## Output Visualizations
 
+### Available Plots
 
+- BSHW Model
+  - Option prices vs strike
+  - Flat effective implied volatility line vs strike
 
+- Heston–HW Model
+  - Option value vs strike for:\
+    - Euler-based prices
+    - AES prices
+    - Synthetic COS-style comparison
+  - Table of COS-style values for each strike
+  - Martingale metrics displayed as Streamlit metrics
 
+- SZHW Model
+  - Implied volatility curves vs strike for varying:
+    - γ (vol-of-vol)
+    - κ (mean reversion)
+    - Rxsigma (stock–vol correlation)
+    - sigmabar (long-run volatility)
 
+- Diversification Products
+  - Price vs allocation weight ω
+  - Relative price vs baseline for non-zero correlations
 
+--------------------------------------------------------------
+
+## Educational Value
+
+### Learning Objectives
+
+- Understand how to extend Black–Scholes with stochastic interest rates
+- See how Heston and Schöbel–Zhu volatility models can be combined with Hull–White
+- Gain intuition about:
+  - Volatility smiles and skews
+  - Effects of correlation between risk factors
+  - Path-dependent discounting with stochastic rates
+- Explore Monte Carlo techniques and CIR exact sampling in practice
+- Use an interactive UI to experiment with hybrid model parameters
+
+--------------------------------------------------------------
+
+## Future Enhancements
+
+### Planned / Possible Extensions
+
+- Full characteristic-function based COS pricing integration
+- Calibration to real market option data
+- Computation of risk measures (Greeks, VaR, Expected Shortfall)
+- Support for additional hybrid models (e.g., multi-asset, jumps)
+- Export of results and plots (CSV / PNG / PDF)
+- Cloud or containerized deployment recipes (Docker, etc.)
+
+--------------------------------------------------------------
+
+## Contributing
+
+### Contributions are welcome in particular for:
+
+- New hybrid model implementations
+- Numerical method improvements (e.g., variance reduction)
+- More realistic structured product payoffs
+- Additional educational examples and documentation
+- Performance tuning and code cleanup
+
+Feel free to open issues or submit pull requests with enhancements.
+
+--------------------------------------------------------------
+
+## Support
+
+### If you encounter issues:
+
+- Verify all Python dependencies are installed and up to date.
+- Run the app with default parameters first to confirm basic functionality.
+- Inspect error messages shown in the Streamlit app and terminal.
+- Review code comments in app.py and models.py for implementation details.
+
+--------------------------------------------------------------
 
 
 
