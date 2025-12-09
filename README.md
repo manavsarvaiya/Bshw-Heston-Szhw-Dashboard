@@ -53,6 +53,7 @@ Project/
 |- app.py
 |- models.py
 |- README.me
+|- Notebook.ipynb
 ```
 
 ### Model Classes
