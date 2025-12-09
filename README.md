@@ -1,4 +1,4 @@
-# bshw-heston-szhw-dashboard
+# Bshw-Heston-Szhw-Dashboard
 
 ## Overview
 
@@ -33,3 +33,53 @@ Install dependencies with:
 ````
 pip install streamlit numpy matplotlib scipy pandas
 ````
+
+### Launch Application
+
+Install dependencies with:
+
+```
+streamlit run app.py
+```
+
+--------------------------------------------------------------
+
+## Project Structure
+
+### Core Files
+
+```
+|  Project/
+|- app.py
+|- models.py
+ - README.me
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
