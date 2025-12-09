@@ -295,7 +295,7 @@ run_analysis()
 ### Model Validation
 
 #### - Martingale Check (Heston–HW):
- $ \( \mathbb{E}[S_T / M_T] \approx S_0 \)$ for risk-neutral correctness.
+$\mathbb{E}\!\left[\frac{S_T}{M_T}\right] \approx S_0$ for risk-neutral correctness.
 
 #### - Basic error handling with fallbacks:
   - CIR sampling fallback to Euler
