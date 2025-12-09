@@ -54,6 +54,7 @@ Project/
 |- models.py
 |- README.me
 |- Notebook.ipynb
+|- Requirements.txt
 ```
 
 ### Model Classes
